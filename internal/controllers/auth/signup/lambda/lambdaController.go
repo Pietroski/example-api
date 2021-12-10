@@ -21,7 +21,7 @@ import (
 // TODO: error wrapper
 
 const (
-	//
+//
 )
 
 type SignUpController struct {
@@ -34,6 +34,7 @@ func NewSignUpController(store signup.Store) *SignUpController {
 	}
 }
 
+// GetIssuer gets the issuer information.
 func (suc *SignUpController) GetIssuer(
 	ctx context.Context,
 	r events.APIGatewayProxyRequest,
@@ -43,6 +44,7 @@ func (suc *SignUpController) GetIssuer(
 	return &events.APIGatewayProxyResponse{}, nil
 }
 
+// ListIssuers lists all issues for admin roles only.
 func (suc *SignUpController) ListIssuers(
 	ctx context.Context,
 	r events.APIGatewayProxyRequest,
@@ -53,6 +55,7 @@ func (suc *SignUpController) ListIssuers(
 	return &events.APIGatewayProxyResponse{}, nil
 }
 
+// DeleteIssuer deletes issuer records for admin roles.
 func (suc *SignUpController) DeleteIssuer(
 	ctx context.Context,
 	r events.APIGatewayProxyRequest,
@@ -63,6 +66,7 @@ func (suc *SignUpController) DeleteIssuer(
 	return &events.APIGatewayProxyResponse{}, nil
 }
 
+// CreateIssuer creates a new issuer.
 func (suc *SignUpController) CreateIssuer(
 	ctx context.Context,
 	r events.APIGatewayProxyRequest,
@@ -89,9 +93,9 @@ func (suc *SignUpController) CreateIssuer(
 	// TODO: generate uuid?
 
 	i := signup.Issuer{
-		Email:          irm.Email,
-		IssuerName:     irm.IssuerName,
-		Password:       hashedPassword,
+		Email:      irm.Email,
+		IssuerName: irm.IssuerName,
+		Password:   hashedPassword,
 	}
 
 	createdIssuer, err := suc.store.CreateIssuer(ctx, &i)
