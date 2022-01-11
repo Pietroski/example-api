@@ -42,19 +42,3 @@ func checkPassword(fieldName string, fieldValue interface{}) (err error) {
 
 	return nil
 }
-
-//func IsEmailValid(email string) bool {
-//	if len(email) < minEmailLength || len(email) > maxEmailLength || !rxEmail.MatchString(email) {
-//		return false
-//	}
-//
-//	return true
-//}
-
-//func IsPasswordValid(password string) bool {
-//	if len(password) < minPassLength {
-//		return false
-//	}
-//
-//	return true
-//}
