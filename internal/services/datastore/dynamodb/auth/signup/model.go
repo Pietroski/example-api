@@ -7,10 +7,10 @@ import (
 
 type (
 	Issuer struct {
-		Email          string           `json:"email"`
-		IssuerName     string           `json:"issuerName"`
-		Password       string           `json:"password"`
-		IssuerVerified bool             `json:"issuerVerified"`
+		Email          string    `json:"email"`
+		IssuerName     string    `json:"issuerName"`
+		Password       string    `json:"password"`
+		IssuerVerified bool      `json:"issuerVerified"`
 		CreatedAt      time.Time `json:"createdAt"`
 		UpdatedAt      time.Time `json:"updatedAt"`
 	}

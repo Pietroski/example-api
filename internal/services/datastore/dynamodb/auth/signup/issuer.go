@@ -125,6 +125,7 @@ func (ds *DynamoDBStore) UpdateIssuer(ctx context.Context, issuer *Issuer) (*Iss
 		return nil, errors.New(errorsModel.ErrorIssuerDoesNotExist)
 	}
 
+	// TODO: verify this role
 	i := _Issuer_{
 		Email:          issuer.Email,
 		IssuerName:     issuer.IssuerName,

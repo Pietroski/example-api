@@ -45,19 +45,21 @@ func (suf *SignUpFactory) Handler(
 	ctx context.Context,
 	request events.APIGatewayProxyRequest,
 ) (*events.APIGatewayProxyResponse, error) {
-	switch request.HTTPMethod {
-	case http.MethodPost:
-		return suf.signUpController.CreateIssuer(ctx, request)
-	case http.MethodPatch:
-		return suf.signUpController.UpdateIssuer(ctx, request)
-	case http.MethodDelete:
-		return suf.signUpController.DeleteIssuer(ctx, request)
-	case http.MethodGet:
-		// TODO: switch between GetIssuer and ListIssuers...
-		return suf.signUpController.GetIssuer(ctx, request)
+	{ // /sign-in
+		switch request.HTTPMethod {
+		case http.MethodPost:
+			return suf.signUpController.CreateIssuer(ctx, request)
+		case http.MethodPatch:
+			return suf.signUpController.UpdateIssuer(ctx, request)
+		case http.MethodDelete:
+			return suf.signUpController.DeleteIssuer(ctx, request)
+		case http.MethodGet:
+			// TODO: switch between GetIssuer and ListIssuers...
+			return suf.signUpController.GetIssuer(ctx, request)
 
-	default:
-		return factoryHandlers.UnhandledMethod()
+		default:
+			return factoryHandlers.UnhandledMethod()
+		}
 	}
 }
 
